@@ -1,6 +1,6 @@
 package com.example.concurrency_demo.health;
 
-import com.example.concurrency_demo.service.ClientColorStateService;
+import com.example.concurrency_demo.service.DatabaseColorService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/color")
 public class ClientColorStateController {
 
-    private final ClientColorStateService clientColorStateService;
+    private final DatabaseColorService clientColorStateService;
 
-    public ClientColorStateController(ClientColorStateService clientColorStateService) {
+    public ClientColorStateController(DatabaseColorService clientColorStateService) {
         this.clientColorStateService = clientColorStateService;
     }
 
     @GetMapping()
     public String getColor() {
-        return clientColorStateService.getColorAsString(1L);
+        return clientColorStateService.getColor().getColor();
     }
 }
